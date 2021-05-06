@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Project>
+@{
+    ViewData["Title"] = "Proje";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@if (TempData["promessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["promessage"]
+    </div>
+}
+@if (TempData["countmessage"] != null)
+{
+    <div class="alert alert-warning">
+        @TempData["countmessage"]
+    </div>
+}
+<form asp-controller="Admin" asp-action="Proje" class="input-group" method="get">
+    <div class="form-outline">
+        <input type="search" id="q" name="q" placeholder="Aramak için giriş yapın" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary ml-1">
+        <i class="fas fa-search"></i>
+    </button>
+</form>
+<hr />
+<h1>Proje</h1>
+<hr />
+<br />
+
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Image</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var project in Model)
+        {
+            <tr>
+                <td>@project.Id</td>
+                <td>@project.Description</td>
+                <td>
+                    <img src="~/img/projeler/@project.ImageUrl" style="width:100px;height:100px" />
+                </td>
+                <td>
+                    <a asp-action="ProEdit" asp-route-id="@project.Id" class="btn btn-info">Düzenle</a>
+                    <a asp-action="ProDelete" asp-route-filename="@project.ImageUrl" asp-route-id="@project.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row">
+    <div class="container">
+        <a asp-action="ProCreate" class="btn btn-primary btn-block">Kayıt Ekle</a>
+    </div>
+</div>
+

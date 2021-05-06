@@ -1,0 +1,54 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "Iletisim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    <script src="assets/vendors/entry/jq.entry.min.js"></script> }
+
+<section class="contact-section">
+    <h2 class="section-title">Bana Ulaş</h2>
+    <p class="mb-4">İş teklifleriniz için aşağıdaki seçenekler ile iletişime geçebilirsiniz</p>
+
+    <div class="contact-cards-wrapper">
+        <div class="contact-card">
+            <h6 class="contact-card-title">Telefon</h6>
+            <p class="contact-card-content">0(534) 505 33 45</p>
+        </div>
+        <div class="contact-card">
+            <h6 class="contact-card-title">E-posta</h6>
+            <p class="contact-card-content">furkant_35@hotmail.com</p>
+        </div>
+    </div>
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["message"]
+        </div>
+    }
+    <div class="text-danger" asp-validation-summary="All"></div>
+    <form asp-action="Iletisim" class="contact-form" method="post">
+        <div class="form-group form-group-name">
+            <label asp-for="ContactName" class="sr-only"></label>
+            <input asp-for="ContactName" class="form-control" placeholder="Ad">
+        </div>
+        <div class="form-group form-group-email">
+            <label asp-for="ContactEmail" class="sr-only"></label>
+            <input asp-for="ContactEmail" class="form-control" placeholder="E-posta">
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactMessage" class="sr-only"></label>
+            <textarea asp-for="ContactMessage" class="form-control" placeholder="Mesaj" rows="5"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">GÖNDER</button>
+    </form>
+
+</section>
+<section class="location-section">
+    <h5 class="section-title">Lokasyonum</h5>
+
+    <div class="map-wrapper embed-responsive embed-responsive-16by9" ">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d99966.12979477136!2d27.18011434879968!3d38.46591054755896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b97c847c2ade23%3A0xc9ef319820d8565c!2zQm9ybm92YS_EsHptaXI!5e0!3m2!1str!2str!4v1619550813460!5m2!1str!2str" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
+    </div>
+</section>

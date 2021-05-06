@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Certificate> 
+@{
+    ViewData["Title"] = "Sertifika";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Scripts{
+    <script src="assets/vendors/entry/jq.entry.min.js"></script>
+}
+
+<section class="blog-section">
+    <h2 class="section-title">SERTİFİKALAR</h2>
+    <hr />
+    <div class="blog-posts-wrapper">
+        @foreach (var certificate in Model)
+        {
+            <article class="blog-post">
+                <a href="#!" class="blog-post-link">
+                    <img src="~/img/sertifika/@certificate.ImageUrl" style="width:300px;height:200px" alt="news 1" class="blog-post-thumbnail">
+                    <h4 class="blog-post-title">@certificate.CertificateName</h4>
+                </a>
+                <p class="blog-post-meta">
+                    <span class="post-published-date">@certificate.CertificateDate</span>
+                </p>
+            </article>
+        }
+    </div>
+</section>
+

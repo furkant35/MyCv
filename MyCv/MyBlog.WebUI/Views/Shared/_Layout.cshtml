@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@ViewData["Title"] - MyBlog.WebUI</title>
+    <link href="https://fonts.googleapis.com/css?family=Mukta:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/vendors/fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/css/live-resume.css">
+</head>
+
+<body>
+    <header>
+   @await Component.InvokeAsync("CategoryMenu")
+    </header>
+
+    <div class="content-wrapper">
+        <partial name="_SideBar" /> 
+        <main>
+            @RenderBody()
+
+            <footer>
+            <strong>Furkan TOPAL</strong>'ın özgeçmiş sayfası. Tüm hakları saklıdır 2021
+            </footer>
+        </main>
+    </div>
+    <script src="~/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/vendors/popperjs/core/dist/umd/popper-base.min.js"></script>
+    <script src="~/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/live-resume.js"></script>
+    @RenderSection("Scripts",false)
+</body>
+
+</html>

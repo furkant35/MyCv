@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Contact>
+@{
+    ViewData["Title"] = "Iletisim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>İletişim Mesajları</h1>
+<hr />
+<br />
+
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Adı</th>
+            <th>E-posta</th>
+            <th>Mesaj</th>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Id</td>
+                <td>@contact.ContactName</td>
+                <td>@contact.ContactEmail</td>
+                <td>@contact.ContactMessage</td>
+                <td>
+                    <a asp-action="ConDelete" asp-route-id="@contact.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Category>
+
+<button class="hide btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto">
+    <img src="~/img/share.svg" alt="share" class="btn-img">
+    PAYLAŞ
+</button>
+<nav class="collapsible-nav" id="collapsible-nav">
+@foreach (var category in Model)
+{
+    <a
+       asp-controller="Home"
+       asp-action="@category.ActionName"
+       asp-route-id="@category.Id"
+       class="nav-link @(ViewBag.SelectedCategory==category.Id.ToString()?"active":"")">@category.Name</a>
+}
+</nav>
+<button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
+        data-target="collapsible-nav">
+    <img src="~/img/hamburger.svg" alt="hamburger">
+</button>
+
